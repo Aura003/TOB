@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 3f07551b78173da41bdfa2ca4994e1c8
+guid: b120a1feecca2f8489ecbcf28e5d8f5b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: maria_M1
-    second: {fileID: 2100000, guid: 284f28e847bc2fe488927c1a4d865196, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: maria_diffuse
-    second: {fileID: 2800000, guid: 9e75b198baf995c4c95e38193be42b8b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: maria_normal
-    second: {fileID: 2800000, guid: 827771352de56054992bc788d7062982, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: maria_specular
-    second: {fileID: 2800000, guid: 1b6bb4e5a97d6a2459e079648ded2a61, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -44,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -97,11 +77,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 562c133a5ce44d64cbd00bacc0d5c762
-  - b120a1feecca2f8489ecbcf28e5d8f5b
-  - 56b9773ef07d86944a87dd6ca765a151
-  - 3dceda295073ab64abd5cfc5a079c69b
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -115,15 +91,15 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: Maria_J_J_Ong
+    rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

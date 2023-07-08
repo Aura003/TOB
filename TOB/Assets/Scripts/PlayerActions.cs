@@ -16,6 +16,12 @@ public class PlayerActions : MonoBehaviour
     public Animator playerAnim;
     private float smoothVelocity;
 
+    private float currentHp = 100f;
+    private float maxHp = 100f;
+    private float HpFill;
+    public Image HpFillIMG;
+
+    public float DamageAmount;
     private void Awake()
     {
         JumpBTN.onClick.AddListener(Jump);
@@ -24,6 +30,7 @@ public class PlayerActions : MonoBehaviour
     void Start()
     {
         joystick.Movement += Move;
+        HpFill = currentHp / maxHp;
     }
 
     private void Move(Vector2 obj)
@@ -58,5 +65,21 @@ public class PlayerActions : MonoBehaviour
             this.transform.rotation = Quaternion.Euler(0, angle, 0);
         }
         playerAnim.SetFloat("movement", movementDirection.magnitude);
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            TakeDamage(DamageAmount);
+        }
+    }
+    public float TakeDamage(float amount)
+    {
+        currentHp -= amount;
+        HpFill = currentHp / maxHp;
+        HpFillIMG.fillAmount = HpFill;
+        if (currentHp <= 0)
+        {
+            playerAnim.SetTrigger("isDead");
+        }
+        return HpFill;
     }
 }
