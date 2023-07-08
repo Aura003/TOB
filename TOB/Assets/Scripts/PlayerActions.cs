@@ -45,12 +45,12 @@ public class PlayerActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 playerMovement = new Vector3(-InputVector.x, 0, -InputVector.y);
+        Vector3 playerMovement = new Vector3(InputVector.x, 0, InputVector.y);
         //this.transform.position +=  moveSpeed * Time.deltaTime * playerMovement;
         //Debug.LogError(playerMovement.magnitude);
 
         Vector3 movementDirection = playerMovement.normalized;
-        float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
+        float targetAngle = Mathf.Atan2(movementDirection.x, 0f) * Mathf.Rad2Deg; //second parameter to be movementDirection.z if you want full 360 rotation
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref smoothVelocity, rotationSpeed);
         if (movementDirection.magnitude > 0)
         {
