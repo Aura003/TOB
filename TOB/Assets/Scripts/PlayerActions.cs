@@ -8,11 +8,13 @@ public class PlayerActions : MonoBehaviour
 {
     public Joystick joystick;
     public float moveSpeed;
+    public float rotationSpeed;
     public event Action<Vector2> Movement;
     private Vector2 InputVector;
 
     public Button JumpBTN;
     public Animator playerAnim;
+    private float smoothVelocity;
 
     private void Awake()
     {
@@ -44,8 +46,17 @@ public class PlayerActions : MonoBehaviour
     void Update()
     {
         Vector3 playerMovement = new Vector3(-InputVector.x, 0, -InputVector.y);
-        this.transform.position +=  moveSpeed * Time.deltaTime * playerMovement;
+        //this.transform.position +=  moveSpeed * Time.deltaTime * playerMovement;
         //Debug.LogError(playerMovement.magnitude);
-        playerAnim.SetFloat("movement", playerMovement.magnitude);
+
+        Vector3 movementDirection = playerMovement.normalized;
+        float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref smoothVelocity, rotationSpeed);
+        if (movementDirection.magnitude > 0)
+        {
+            this.transform.position += movementDirection * moveSpeed * Time.deltaTime;
+            this.transform.rotation = Quaternion.Euler(0, angle, 0);
+        }
+        playerAnim.SetFloat("movement", movementDirection.magnitude);
     }
 }

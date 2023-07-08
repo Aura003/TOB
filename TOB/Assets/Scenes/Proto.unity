@@ -1027,6 +1027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 1945434048}
   moveSpeed: 1
+  rotationSpeed: 10
   JumpBTN: {fileID: 914854616}
   playerAnim: {fileID: 1834062244}
 --- !u!95 &1834062244 stripped
