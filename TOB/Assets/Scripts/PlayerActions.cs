@@ -4,8 +4,9 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public class PlayerActions : MonoBehaviour
+public class PlayerActions : MonoBehaviour, ITrapHandler
 {
+    public Tag myTag;
     public Joystick joystick;
     public float moveSpeed;
     public float rotationSpeed;
@@ -22,6 +23,13 @@ public class PlayerActions : MonoBehaviour
     public Image HpFillIMG;
 
     public float DamageAmount;
+
+    public float HP => currentHp;
+
+    public int Damage => (int)DamageAmount;
+
+    public Tag MyTag => myTag;
+
     private void Awake()
     {
         JumpBTN.onClick.AddListener(Jump);
@@ -66,20 +74,16 @@ public class PlayerActions : MonoBehaviour
         }
         playerAnim.SetFloat("movement", movementDirection.magnitude);
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            TakeDamage(DamageAmount);
-        }
     }
-    public float TakeDamage(float amount)
+
+    public void ApplyToHealth(int value, ITrapHandler agent)
     {
-        currentHp -= amount;
+        currentHp += value;
+        currentHp = Mathf.Max(0, currentHp);
+        if (value < 0)
+            agent.ApplyToHealth(value,this);
+
         HpFill = currentHp / maxHp;
         HpFillIMG.fillAmount = HpFill;
-        if (currentHp <= 0)
-        {
-            playerAnim.SetTrigger("isDead");
-        }
-        return HpFill;
     }
 }
