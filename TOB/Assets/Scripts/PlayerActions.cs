@@ -30,6 +30,10 @@ public class PlayerActions : MonoBehaviour, ITrapHandler
 
     public Tag MyTag => myTag;
 
+    private bool canJump = false;
+    public float maxHeight = 0.8f;
+    public float jumpfactor;
+
     private void Awake()
     {
         JumpBTN.onClick.AddListener(Jump);
@@ -55,6 +59,7 @@ public class PlayerActions : MonoBehaviour, ITrapHandler
     private void Jump()
     {
         playerAnim.SetTrigger("canJump");
+        canJump = true;
     }
 
     // Update is called once per frame
@@ -73,7 +78,18 @@ public class PlayerActions : MonoBehaviour, ITrapHandler
             this.transform.rotation = Quaternion.Euler(0, angle, 0);
         }
         playerAnim.SetFloat("movement", movementDirection.magnitude);
-
+        if (canJump)
+        {
+            this.transform.position += new Vector3(0, Time.deltaTime * jumpfactor, 0);
+            if(this.transform.position.y >= maxHeight)
+            {
+                canJump = false;
+            }
+        }
+        if(canJump==false && this.transform.position.y > 0)
+        {
+            this.transform.position += new Vector3(0, -Time.deltaTime * jumpfactor, 0);
+        }
     }
 
     public void ApplyToHealth(int value, ITrapHandler agent)

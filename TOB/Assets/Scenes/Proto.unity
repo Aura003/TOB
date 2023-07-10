@@ -1606,7 +1606,9 @@ MonoBehaviour:
   JumpBTN: {fileID: 914854616}
   playerAnim: {fileID: 1834062244}
   HpFillIMG: {fileID: 314896297}
-  DamageAmount: 20
+  DamageAmount: 0
+  maxHeight: 0.6
+  jumpfactor: 2
 --- !u!95 &1834062244 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3f07551b78173da41bdfa2ca4994e1c8, type: 3}
@@ -1636,7 +1638,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &1834062246
