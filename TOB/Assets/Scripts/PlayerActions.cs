@@ -85,5 +85,7 @@ public class PlayerActions : MonoBehaviour, ITrapHandler
 
         HpFill = currentHp / maxHp;
         HpFillIMG.fillAmount = HpFill;
+        if (currentHp <= 0)
+            playerAnim.SetTrigger("isDead");
     }
 }
